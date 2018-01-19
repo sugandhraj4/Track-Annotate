@@ -11,11 +11,40 @@ details here ==>> 1. https://github.com/opencv/opencv_contrib/blob/master/module
 This code was created to achieve a "csv" file containing annnotation data( Names, Bounding Boxes) of the potential
 objects/landmarks. This csv file can easily be used to create a tf.record file( if using Tensorflow
 
+Input:
+
+Video file or a webcam feed
+
+Output:
+
+CSV File : "Output.csv"
+
 Usage:
 
-Update:
+1. Run the script, and you will see a window named " Select landmarks or objects". Select a bounding box or ROI 
+( Region of Interest) on the window using mouse cursor. Hit Enter or Space Bar to move ahead.
+2. It will throw a prompt : "Enter a new landmark name?", this is basically the name of the object of interest. Give a name
+and hit Enter.
+3. Prompt: " Do you want to annotate more?" 
+  -  If "No"  - The tracker gets initated and starts tracking on the video on a new window named " Tracking"
+  -  If "Yes" -  You will again get the window named " Select landmarks or objects". Select another bounding box or ROI 
+     and hit Enter or Space to move ahead.
+  -  It will as you the landmark name, and then if you want to annotate more.
+  Note : This script was designed to annotate upto five(5) landmarks on a single frame.
+4. Once, you say "No" to the prompt to annotate more, it will start tracking all(or single) landmark(s) and show on the 
+" Tracking" window.
+5. Press ESC in order to stop the tracking.
+6. Sometimes, your potential landmarks will be out of the current frame, but will enter the video at a later point of time, in
+this case press Tab to stop the tracking.
+7. Prompt: "Do you want to track new landmarks?".
+  -  If :Yes"  - You will see the same procedure from steps 1 through 4.
+  -  If " No"  - The script will terminate after logging all the details into "Output.csv"
+8. In order to exit the script this time, just press "Tab" and say " No" to new landmarks, script will terminate.
+9. Whenever, script gets terminated, it will log the details as follows
+   
+   Reference Header = ["filename", "width", "height", "class", "xmin", "ymin", "xmax", "ymax"]
+   
 
-- work on fixing bbox coordinates with reference to labelImg
 
 '''
 
@@ -44,9 +73,9 @@ font = cv2.FONT_HERSHEY_SIMPLEX
 
 # Enter your video's path or name if in the same path
 
-video_path = 'New_Data_Missing/MDD_out_test_1.mp4'
+video_path = 'New_Data/Video_out_test_1.mp4'
 video = cv2.VideoCapture(video_path)
-frame_string = 'MDD_out'
+frame_string = raw_input("Enter the frame string")# Ask the frame string according to your need.
 
 
 # Set up OpenCV mutlti- tracker.
