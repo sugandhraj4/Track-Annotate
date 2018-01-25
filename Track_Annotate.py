@@ -9,7 +9,7 @@ details here ==>> 1. https://github.com/opencv/opencv_contrib/blob/master/module
                   4. https://docs.opencv.org/3.1.0/d5/d07/tutorial_multitracker.html
 
 This code was created to achieve a "csv" file containing annnotation data( Names, Bounding Boxes) of the potential
-objects/landmarks. This csv file can easily be used to create a tf.record file( if using Tensorflow
+objects/landmarks. This csv file can easily be used to create a tf.record file( if using Tensorflow)
 
 Input:
 
